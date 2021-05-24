@@ -1,0 +1,71 @@
+{% include 'structure/header.twig' %} {% if session.user.role == 0 %} {% include 'structure/navbar.twig' %} {% else %} {% include 'structure/navbarAdmin.twig' %} {% endif %}
+<style>
+    .salles {
+        width: 100%;
+    }
+</style>
+<section id="home">
+    {% if sallesDispo %}
+    <div class="listeSalles">
+        <h3>Liste des salles disponibles</h3>
+        <ul class="salles mdl-list">
+            {% for salle in sallesDispo %}
+            <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <span>{{ salle.nom_salle }}</span>
+                </span>
+                <span class="mdl-list__item-secondary-content">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                            id="reservation">Réserver</button>
+                </span>
+            </li>
+            <script>
+                $('#reservation').click(() => {
+                    let dataReservation = {
+                        id_user: '{{ session.user.id_user }}',
+                        id_salle: '{{ salle.id_salle }}',
+                        nom_salle: '{{ salle.nom_salle }}'
+                    }
+                    getReservation(dataReservation);
+                })
+            </script>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %} {% if salles %}
+    <div class="listeSalles">
+        <h3>Liste des salles reservé</h3>
+        <ul class="salles mdl-list">
+            {% for salle in salles %}
+            <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <span>{{ salle.nom_salle }}</span>
+                </span>
+                {% if session.user.id_user == salle.id_user %}
+                <span class="mdl-list__item-secondary-content">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                            id="deleteReservation">X</button>
+                </span> {% endif %}
+            </li>
+            <script>
+                $('#deleteReservation').click(() => {
+                    let dataDeleteReservation = {
+                        id_user: '{{ session.user.id_user }}',
+                        id_salle: '{{ salle.id_salle }}',
+                        nom_salle: '{{ salle.nom_salle }}'
+                    }
+                    getDeleteReservation(dataDeleteReservation);
+                })
+            </script>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</section>
+
+</div>
+</main>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{% include 'structure/header.twig' %}
+
+<section class="container">
+    <div id="signup">
+        <h1>{{ titrePage }}</h1>
+        <form class="formLogin">
+            <div class="formLogin">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="email" autocomplete="email">
+                    <label class="mdl-textfield__label" for="email">Saisissez votre email</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="nickname">
+                    <label class="mdl-textfield__label" for="nickname">Choisissez un surnom</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input passwordLogin" type="password" id="password" autocomplete="current-password">
+                    <label class="mdl-textfield__label" for="password">Mot de passe</label>
+                </div>
+            </div>
+            <button id="loginButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="signup()" style="margin-top: 1rem;">Inscription</button>
+        </form>
+        <a class="mdl-navigation__link" href="/login">Déja inscrit ?</a>
+    </div>
+
+
+</section>
+
+</div>
+</main>
+</div>
+</body>
+
+<script src="/js/user/signup.js"></script>
+
+</html>

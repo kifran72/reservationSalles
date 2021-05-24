@@ -1,0 +1,26 @@
+<main class="mdl-layout__content">
+    <div class="page-content">
+        <div class="mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header mdl-layout__header--scroll">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title"><a class="mdl-navigation__link"
+                           href="/">Accueil</a></span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation -->
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link" href="/logout">Déconnexion</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">{{titrePage}}</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="/logout">Déconnexion</a>
+                    <a class="mdl-navigation__link">Bonjour {{session.user.nickname}}</a>
+                    <a class="mdl-navigation__link">email: {{session.user.email}}</a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">

@@ -1,0 +1,124 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.listeSalles {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Material DESIGN */
+
+.mdl-textfield {
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button {
+    display: flex !important;
+    justify-content: center;
+    align-items: center !important;
+}
+
+.mdl-progress {
+    max-width: 80% !important;
+    top: 50% !important;
+}
+
+.mdl-list__item--two-line {
+    height: 72px;
+    align-items: baseline !important;
+}
+
+.mdl-layout__drawer.is-visible {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    display: flex !important;
+    align-items: center !important;
+}
+
+.mdl-layout__drawer>.mdl-layout__title,
+.mdl-layout__drawer>.mdl-layout-title {
+    line-height: 64px;
+    padding-left: 0px !important;
+}
+
+.mdl-layout__drawer-button {
+    display: block;
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    border: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: 56px;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 8px 12px;
+    top: 0;
+    left: 0;
+    color: rgb(255, 255, 255);
+    z-index: 4;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+    background-color: transparent !important;
+}
+
+
+/* Toastr */
+
+.toast-top-center {
+    top: 12px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+@media all and (max-width: 240px) {
+    .toast-top-center {
+        margin-left: -54px;
+    }
+}
+
+@media all and (min-width: 241px) and (max-width: 320px) {
+    .toast-top-center {
+        margin-left: -64px;
+    }
+}
+
+@media all and (min-width: 321px) and (max-width: 480px) {
+    .toast-top-center {
+        margin-left: -96px;
+    }
+}

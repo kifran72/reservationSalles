@@ -1,0 +1,38 @@
+{% include 'structure/header.twig' %}
+
+<section class="container">
+    <h1>Enregistrer le premier administrateur </h1>
+    <pre>
+        exemple: 
+        email: test@test.test
+        surnom: test
+        mot de passe: test
+    </pre>
+
+    <form class="formLogin">
+        <div class="formLogin">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="email" autocomplete="email">
+                <label class="mdl-textfield__label" for="email">Saisissez votre email</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="nickname">
+                <label class="mdl-textfield__label" for="nickname">Choisissez un surnom</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input passwordLogin" type="password" id="password" autocomplete="current-password">
+                <label class="mdl-textfield__label" for="password">Mot de passe</label>
+            </div>
+        </div>
+        <button id="loginButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="newAdmin()" style="margin-top: 1rem;">Connexion</button>
+    </form>
+
+</section>
+
+</div>
+</main>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,94 @@
+{% include 'structure/header.twig' %} {% if session.user.role == 0 %} {% include 'structure/navbar.twig' %} {% else %} {% include 'structure/navbarAdmin.twig' %} {% endif %}
+
+<section>
+    <h1>Gestion des salles de sport</h1>
+    <input type="button" value="Ajouter une salle" class="show buttonAddSalle">
+    <script>
+        $(".buttonAddSalle").click(() => {
+            $("#buttonModal").val('Valider')
+        });
+    </script><br> {% for salle in salles %}<br> Salle<br>
+    <div id="listeSalle">
+        <ul>
+            <span id="nom_salleSalle">{{ salle.nom_salle }}</span>
+            <li id="sportSalle"> {{ salle.sport }}</li>
+            <li id="nb_placeSalle"> {{ salle.nb_place }}</li>
+            <li id="descriptionSalle">{{ salle.description }}</li>
+        </ul>
+    </div>
+    <span class="show edit{{salle.nom_salle}}" id="buttonEditSalle">Modifier la salle</span>
+    <button class="deleteSalle">X</button>
+    <script>
+        $('.edit{{salle.nom_salle}}').click(() => {
+            salleModal = {
+                id_salle: '{{salle.id_salle}}',
+                nom_salle: '{{salle.nom_salle}}',
+                sport: '{{salle.sport}}',
+                nb_place: '{{salle.nb_place}}',
+                description: '{{salle.description}}'
+            };
+            $("#buttonModal").val('Modifier')
+
+            loadSalle(salleModal);
+        });
+
+        $('.deleteSalle').click(() => {
+            let id_salle = '{{salle.id_salle}}';
+            deleteSalle(id_salle);
+        })
+    </script> <br>{% endfor %}
+    <div class="mask"></div>
+    <div class="modal">
+        <button class="close">X</button>
+        <div class="infoSalle">
+            <input id="id_salle" style="pointer-events: none; visibility: hidden;"></span>
+            <label for="nom_salle">Nom de la salle</label>
+            <input id="nom_salle"></input>
+            <label for="sport">Type de sport</label>
+            <select id="sport">
+                <option value="Football">Foot en salle</option>
+                <option value="Tennis">Tennis</option>
+                <option value="Judo">Judo</option>
+                <option value="Basket-ball">Basket-ball</option>
+                <option value="Handball">Handball</option>
+                <option value="Badminton">Badminton</option>
+            </select>
+            <label for="nb_place">nombre de place</label>
+            <select id="nb_place">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+            <label for="description">Description</label>
+            <textarea id="description" cols="30" rows="10"></textarea>
+        </div>
+        <input id="buttonModal" type="button" value="">
+        <script>
+            $("#buttonModal").click(() => {
+                let result = $("#buttonModal").val();
+                switch (result) {
+                    case 'Valider':
+                        addSalle();
+                        break;
+                    case 'Modifier':
+                        editSalle()
+                        break;
+                }
+            });
+        </script>
+    </div>
+</section>
+
+
+</div>
+</main>
+</div>
+</body>
+<script src="/js/modals.js"></script>
+
+</html>

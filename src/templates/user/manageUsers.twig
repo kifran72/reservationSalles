@@ -1,0 +1,41 @@
+{% include 'structure/header.twig' %} {% if session.user.role == 0 %} {% include 'structure/navbar.twig' %} {% else %} {% include 'structure/navbarAdmin.twig' %} {% endif %}
+
+<section class="container">
+    <h1>Gérer les utilisateurs du sites</h1>
+    <div class="listeUsers">
+        {% if users %} {% for user in users %}
+        <li>email: {{ user.email }} role: <span id="role{{user.email}}Liste">{{ user.role }}</span> </li> <input type="button" name="add" value="Gérer" class="show {{user.email}}" aria-haspopup="true">
+        <script>
+            $('.{{user.email}}').click(() => {
+                userModal = {
+                    email: '{{user.email}}',
+                    role: '{{user.role}}'
+                };
+                loadUser(userModal);
+            });
+        </script>
+        {% endfor %} {% endif %}
+    </div>
+    <div class="mask"></div>
+    <div class="modal">
+        <button class="close">X</button>
+        <div class="infoUser">
+            <input id="email" style="pointer-events: none;"></input>
+            <select id="role">
+                <option value="0">0</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+        <input type="button" value="Valider" onclick="manageUsers()">
+    </div>
+</section>
+
+</div>
+</main>
+</div>
+
+</body>
+<script src="/js/modals.js"></script>
+
+
+</html>
