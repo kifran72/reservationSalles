@@ -2,20 +2,36 @@
 
 <section class="container">
     <h1>Gérer les utilisateurs du sites</h1>
-    <div class="listeUsers">
-        {% if users %} {% for user in users %}
-        <li>email: {{ user.email }} role: <span id="role{{user.email}}Liste">{{ user.role }}</span> </li> <input type="button" name="add" value="Gérer" class="show {{user.email}}" aria-haspopup="true">
-        <script>
-            $('.{{user.email}}').click(() => {
-                userModal = {
-                    email: '{{user.email}}',
-                    role: '{{user.role}}'
-                };
-                loadUser(userModal);
-            });
-        </script>
-        {% endfor %} {% endif %}
-    </div>
+    {% if users %}
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Surnom</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.nickname }}</td>
+                <td id="role{{user.email}}Liste">{{ user.role }}</td>
+                <td><input type="button" name="add" value="Gérer" class="show {{user.email}}" aria-haspopup="true"></td>
+            </tr>
+            <script>
+                $('.{{user.email}}').click(() => {
+                    userModal = {
+                        email: '{{user.email}}',
+                        role: '{{user.role}}'
+                    };
+                    loadUser(userModal);
+                });
+            </script>
+            {% endfor %} {% endif %}
+        </tbody>
+    </table>
     <div class="mask"></div>
     <div class="modal">
         <button class="close">X</button>
@@ -25,8 +41,8 @@
                 <option value="0">0</option>
                 <option value="2">2</option>
             </select>
+            <input type="button" value="Valider" onclick="manageUsers()" style="margin: 1rem;">
         </div>
-        <input type="button" value="Valider" onclick="manageUsers()">
     </div>
 </section>
 

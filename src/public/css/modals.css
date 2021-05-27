@@ -6,6 +6,10 @@
     border: 0;
     border-bottom: 2px solid grey;
     cursor: pointer;
+    width: 11rem;
+    height: 3rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .show:hover {
@@ -13,6 +17,28 @@
 }
 
 .show:active {
+    transform: scale(0.9);
+}
+
+.delete {
+    position: relative;
+    background: grey;
+    color: #fff;
+    border-radius: 5px;
+    border: 0;
+    border-bottom: 2px solid grey;
+    cursor: pointer;
+    width: 11rem;
+    height: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.delete:hover {
+    background: cornflowerblue;
+}
+
+.delete:active {
     transform: scale(0.9);
 }
 
@@ -46,7 +72,7 @@
     top: 50%;
     left: 50%;
     width: 400px;
-    height: 300px;
+    height: auto;
     margin-left: -200px;
     margin-top: -150px;
     background: #f7f7f7;

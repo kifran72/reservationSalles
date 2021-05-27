@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 23 mai 2021 à 12:55
+-- Généré le : mer. 26 mai 2021 à 21:21
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` tinyint(1) NOT NULL DEFAULT '0',
+  `nickname` varchar(50) NOT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 COMMIT;

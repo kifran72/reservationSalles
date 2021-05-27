@@ -72,7 +72,8 @@ export const SallesRoute = (app: any, twing: any, services: any) => {
     {
         let infoReservation = req.body;
         let testDelete = await services.mysql.reserverSalle(infoReservation);
-        if (testDelete.affectedRows !== 0) {
+        if ( testDelete.affectedRows !== 0 )
+        {
             res.send({
                 session: req.session,
                 error: false

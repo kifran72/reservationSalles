@@ -10,8 +10,8 @@ export const routes = (app: any, twing: any, services: any) => {
         if ( !req.session.isConnected ) { return res.redirect( '/login' ); }
         let sallesDispo = await services.mysql.getSallesDispo();
         let salles = await services.mysql.getSallesIndisponible();
-        let reservation = await services.mysql.getReservation(req.session.user.id_user);
-        twing.render( "index.twig", { session: req.session, salles: salles, sallesDispo: sallesDispo, reservation: reservation, titrePage: 'Accueil'}).then((output: any) => {
+        let reservations = await services.mysql.getReservation(req.session.user.id_user);
+        twing.render( "index.twig", { session: req.session, salles: salles, sallesDispo: sallesDispo, reservations: reservations, titrePage: 'Accueil'}).then((output: any) => {
             return res.end(output);
         });
     } );

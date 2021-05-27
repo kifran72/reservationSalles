@@ -7,36 +7,51 @@
         $(".buttonAddSalle").click(() => {
             $("#buttonModal").val('Valider')
         });
-    </script><br> {% for salle in salles %}<br> Salle<br>
-    <div id="listeSalle">
-        <ul>
-            <span id="nom_salleSalle">{{ salle.nom_salle }}</span>
-            <li id="sportSalle"> {{ salle.sport }}</li>
-            <li id="nb_placeSalle"> {{ salle.nb_place }}</li>
-            <li id="descriptionSalle">{{ salle.description }}</li>
-        </ul>
+    </script>
+    <div id="listeSalle" style="margin-bottom: 3rem;">
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Nom salle</th>
+                    <th>Type de sport</th>
+                    <th>Nombre de place dans la salle</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for salle in salles %}
+                <tr>
+                    <td id="nom_salleSalle">{{ salle.nom_salle }}</td>
+                    <td id="sportSalle">{{ salle.sport }}</td>
+                    <td id="nb_placeSalle">{{ salle.nb_place }}</td>
+                    <td id="descriptionSalle">{{ salle.description }}</td>
+                    <td><button class="show edit{{salle.nom_salle}}" id="buttonEditSalle" style="margin: 1rem;">Modifier</button><button class="delete deleteSalle" style="margin: 1rem;">Supprimer</button>
+                    </td>
+                </tr>
+                <script>
+                    $('.edit{{salle.nom_salle}}').click(() => {
+                        salleModal = {
+                            id_salle: '{{salle.id_salle}}',
+                            nom_salle: '{{salle.nom_salle}}',
+                            sport: '{{salle.sport}}',
+                            nb_place: '{{salle.nb_place}}',
+                            description: '{{salle.description}}'
+                        };
+                        $("#buttonModal").val('Modifier')
+
+                        loadSalle(salleModal);
+                    });
+
+                    $('.deleteSalle').click(() => {
+                        let id_salle = '{{salle.id_salle}}';
+                        deleteSalle(id_salle);
+                    })
+                </script> <br>{% endfor %}
+            </tbody>
+        </table>
     </div>
-    <span class="show edit{{salle.nom_salle}}" id="buttonEditSalle">Modifier la salle</span>
-    <button class="deleteSalle">X</button>
-    <script>
-        $('.edit{{salle.nom_salle}}').click(() => {
-            salleModal = {
-                id_salle: '{{salle.id_salle}}',
-                nom_salle: '{{salle.nom_salle}}',
-                sport: '{{salle.sport}}',
-                nb_place: '{{salle.nb_place}}',
-                description: '{{salle.description}}'
-            };
-            $("#buttonModal").val('Modifier')
 
-            loadSalle(salleModal);
-        });
-
-        $('.deleteSalle').click(() => {
-            let id_salle = '{{salle.id_salle}}';
-            deleteSalle(id_salle);
-        })
-    </script> <br>{% endfor %}
     <div class="mask"></div>
     <div class="modal">
         <button class="close">X</button>
@@ -66,8 +81,8 @@
             </select>
             <label for="description">Description</label>
             <textarea id="description" cols="30" rows="10"></textarea>
+            <input id="buttonModal" type="button" value="" style="margin-top: 1rem;">
         </div>
-        <input id="buttonModal" type="button" value="">
         <script>
             $("#buttonModal").click(() => {
                 let result = $("#buttonModal").val();

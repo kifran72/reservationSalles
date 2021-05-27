@@ -19,7 +19,7 @@ export default class Mysql {
             });
         } catch ( err )
         {
-            chalk.red( err );
+            chalk.red('BDD connected' , err ); 
         }
     }
 
