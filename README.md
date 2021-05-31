@@ -1,7 +1,7 @@
 # reservationSalles
 Application de réservation de salles de sport  
 
-Import BDD from database/messagerapp.sql
+Import BDD from database/reservationsalles.sql
 
 for install depedencies:
 
