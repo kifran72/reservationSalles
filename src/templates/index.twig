@@ -24,10 +24,10 @@
                 <td>{{ salle.sport }}</td>
                 <td>{{ salle.nb_place }}</td>
                 <td>{{ salle.description }}</td>
-                <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="reservation">Réserver</button></td>
+                <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="reservation{{salle.nom_salle}}">Réserver</button></td>
             </tr>
             <script>
-                $('#reservation').click(() => {
+                $('#reservation{{salle.nom_salle}}').click(() => {
                     let dataReservation = {
                         id_user: '{{ session.user.id_user }}',
                         id_salle: '{{ salle.id_salle }}',
@@ -60,10 +60,10 @@
                 <td>{{ salle.description }}</td>
                 <td>
                     {% if (session.user.role > 0) or (session.user.id_user == salle.id_user) %}
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="deleteReservation">Supprimer réservation</button> {% endif %}
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="deleteReservation{{salle.nom_salle}}">Supprimer réservation</button> {% endif %}
                 </td>
                 <script>
-                    $('#deleteReservation').click(() => {
+                    $('#deleteReservation{{salle.nom_salle}}').click(() => {
                         let dataDeleteReservation = {
                             id_user: '{{ session.user.id_user }}',
                             id_salle: '{{ salle.id_salle }}',
